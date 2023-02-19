@@ -33,10 +33,21 @@ function App() {
       </header>
 
       <section>
-        {<ChatRoom />}
+        {user ? <ChatRoom /> : <SignIn />}
       </section>
     </div>
   );
+}
+
+function SignIn() {
+  const signInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  }
+
+  return (
+    <button onClick={signInWithGoogle}>Sign in with Google</button>
+  )
 }
 
 function SignOut() {
@@ -79,7 +90,7 @@ function ChatRoom() {
 
         <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
 
-        <button type="submit">Enviar</button>
+        <button type="submit">paloma</button>
 
       </form>
     </>
@@ -93,6 +104,7 @@ function ChatMessage(props) {
 
   return(
     <div className={"message ${messageClass}"}>
+      <img src={photoURL} />
       <p>{text}</p>
     </div>
   )
