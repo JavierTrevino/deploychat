@@ -92,6 +92,8 @@ function ChatRoom() {
 
         <button type="submit">paloma</button>
 
+        <SignOut />
+
       </form>
     </>
   )
